@@ -1,25 +1,59 @@
 # Problem Statement 🌐
 
-You’re tasked with creating and setting up distinct Amazon VPCs for the production and development teams at XYZ Corporation. Here’s what needs to be done:
+# 🌐 Designing Multi-Tier Amazon VPCs for Secure Production and Development Environments 🚀
 
-## Production Network 🏢
+## Project Overview
+At **XYZ Corporation**, we are expanding! 🎉 As part of the growth, I’ve been tasked with designing and deploying two **Amazon VPCs**—one for our **production** team and another for **development**. Each environment has specific networking and security requirements, ensuring they function optimally while remaining scalable and secure. 🔒
 
-1. **Design and Build a Four-Tier Architecture**
-2. **Create Five Subnets**: 
-   - Four private subnets: **app1**, **app2**, **dbcache**, and **db**
-   - One public subnet: **web**
-3. **Launch Instances**: Deploy instances in all subnets, naming them according to their respective subnet names.
-4. **Internet Access**: Allow the `dbcache` instance and the `app1` subnet to send Internet requests.
-5. **Manage Security Groups and NACLs** 🔒
-6. **VPC Endpoint for S3**: Create an endpoint for the S3 service, enabling access to objects in any bucket from within the VPC.
+---
 
-## Development Network 🚀
+## 🏗️ Production Network Setup
 
-1. **Design and Build a Two-Tier Architecture**
-2. **Create Two Subnets**: 
-   - Subnets named **web** and **db**, with instances launched and named accordingly.
-3. **Internet Access**: Ensure only the **web** subnet can send Internet requests.
-4. **Peering Connection**: Establish a peering connection between the production and development networks.
-5. **Database Subnet Connection**: Set up a connection between the `db` subnets of both the production and development networks.
+1. **Design a Four-Tier Architecture** 🏢
+   - Build a robust 4-tier architecture that separates concerns across different subnets.
+
+2. **Create Five Subnets** 🌐
+   - 🟢 Four **private subnets**:
+     - `app1`
+     - `app2`
+     - `dbcache`
+     - `db`
+   - 🟡 One **public subnet**:
+     - `web`
+
+3. **Launch EC2 Instances in Each Subnet** 💻
+   - Instances should be named based on the subnet they're in (e.g., `app1` instance for the `app1` subnet).
+
+4. **Allow Internet Access for Specific Instances** 🌍
+   - Only the **dbcache instance** and the **app1 subnet** should be able to send internet requests (configure NAT Gateway as needed).
+
+5. **Manage Security Groups & NACLs** 🔐
+   - Ensure secure and controlled access to and from each instance and subnet using **Security Groups** and **Network Access Control Lists (NACLs)**.
+
+6. **Create an S3 VPC Endpoint** 🛠️
+   - Set up a **VPC Endpoint** for S3 to securely access S3 objects from within the VPC without internet.
+
+---
+
+## 🛠️ Development Network Setup
+
+1. **Design a Two-Tier Architecture** 🏗️
+   - Two subnets:
+     - `web`
+     - `db`
+
+2. **Launch EC2 Instances** 💻
+   - Name the instances based on the subnets (`web instance`, `db instance`).
+
+3. **Configure Internet Access for Web Subnet Only** 🌐
+   - Ensure that only the **web subnet** can send internet requests while keeping the **db subnet** isolated.
+
+4. **Create a VPC Peering Connection** 🔄
+   - Set up a **peering connection** between the production and development VPCs to allow seamless communication.
+
+5. **Setup Communication Between DB Subnets** 🔗
+   - Enable secure communication between the **db subnet** in the production network and the **db subnet** in the development network using security rules.
+
+Feel free to customize and expand as per the project’s needs!
 
 Let’s get started! 🚀
